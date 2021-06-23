@@ -10,7 +10,7 @@ export interface CardFleeState {
   cardBgTransform: {}
 }
 
-interface CardFleeProps {
+export interface CardFleeProps {
   height: number,
   id: number | string,
   image?: string,

@@ -1,2 +1,2 @@
 import './index.css';
-export * from './CardFlee'
+module.exports = require('./CardFlee')

@@ -61,5 +61,8 @@
     "card-animation",
     "animated-card",
     "movie"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/Ashuto7h"
+  }
 }
