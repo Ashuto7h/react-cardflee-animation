@@ -12,9 +12,9 @@ export interface CardFleeState {
 
 interface CardFleeProps {
   height: number,
-  id: string,
-  image?: any,
-  width: any,
+  id: number | string,
+  image?: string,
+  width: number,
   sensitivity?: number,
   head?: Component,
   content?: Component,
@@ -63,8 +63,8 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
     position: "relative",
     "margin-left": "40px",
     cursor: "pointer",
-    width: this.props.width || "200px",
-    height: this.props.height || "300px",
+    width: (this.props.width && (this.props.width + 'px')) || "200px",
+    height: (this.props.height && (this.props.height + 'px')) || "300px",
     "background-color": this.props.bgcolor || "black",
     overflow: "hidden",
     "border-radius": "10px",
