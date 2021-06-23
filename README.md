@@ -6,7 +6,7 @@ Written in typescript.
 
 ### Demo
 
-<https://user-images.githubusercontent.com/53266261/122939164-0571e100-d391-11eb-9d2b-b07f32dfee19.mp4>
+https://user-images.githubusercontent.com/53266261/122939164-0571e100-d391-11eb-9d2b-b07f32dfee19.mp4
 
 ## Usage
 
