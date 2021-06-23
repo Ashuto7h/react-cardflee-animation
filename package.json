@@ -54,5 +54,14 @@
     "**/*.{js,jsx,ts,tsx}": [
       "rpg-cli fix"
     ]
-  }
+  },
+  "keywords": [
+    "card",
+    "animation",
+    "react-card",
+    "react-animation",
+    "card-animation",
+    "animated-card",
+    "movie"
+  ]
 }
