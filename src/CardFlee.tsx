@@ -1,4 +1,5 @@
-import React, { ReactNode, Component } from 'react';
+import React, { Component } from 'react';
+import { ReactElement } from 'react';
 import './styles.css';
 
 export interface CardFleeState {
@@ -15,8 +16,8 @@ export interface CardFleeProps {
   image?: string,
   width?: number,
   sensitivity?: number,
-  head?: ReactNode,
-  content?: ReactNode,
+  head?: ReactElement | string | Element,
+  content?: ReactElement | string | Element,
   bgcolor?: string
 }
 

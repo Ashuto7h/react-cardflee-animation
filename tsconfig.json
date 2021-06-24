@@ -40,11 +40,11 @@
     "lib",
     "rollup.config.js",
     "**/node_modules/*",
-    "./src/example.tsx"
+    "src/example.tsx"
   ],
   "include": [
     "./src/**/*.tsx",
     "./src/**/*.ts",
     "index.js"
-  ]
+, "src/example.tsx"  ]
 }

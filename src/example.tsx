@@ -1,6 +1,5 @@
 import React from "react";
-// import CardFlee from "./CardFlee";
-import CardFlee from 'react-cardflee-anim';
+import CardFlee from './CardFlee';
 
 import ReactDOM from "react-dom";
 const content1 = <React.Fragment><p>watch the movie now
