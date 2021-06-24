@@ -31,7 +31,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -rf ./lib/* && rollup -c -w",
+    "build": "rm -rf ./lib/* && rollup -c",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "rm -rf ./lib/* && rollup -c"
@@ -64,6 +64,7 @@
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "rollup": "^2.52.2",
+    "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-typescript2": "^0.30.0"
   },

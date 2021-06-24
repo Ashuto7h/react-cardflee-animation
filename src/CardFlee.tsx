@@ -29,7 +29,7 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
   halfHeight: number;
   sensitivity: number;
   senseY: number;
-
+  cardCss: {};
   constructor(props: CardFleeProps) {
     super(props);
     this.background = (props.image && {
@@ -40,6 +40,10 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
     this.id = `card-${props.id}`;
     this.sensitivity = props.sensitivity || 12;
     this.senseY = -(this.sensitivity * 0.8);
+    this.cardCss = {
+      width: (this.props.width && (this.props.width + 'px')) || "300px",
+      height: (this.props.height && (this.props.height + 'px')) || "500px",
+    }
 
     this.state = {
       mouseX: 0,
@@ -57,18 +61,6 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
     }
   }
 
-  cardStyle = {
-    position: "relative",
-    "margin-left": "40px",
-    cursor: "pointer",
-    width: (this.props.width && (this.props.width + 'px')) || "200px",
-    height: (this.props.height && (this.props.height + 'px')) || "300px",
-    "background-color": this.props.bgcolor || "black",
-    overflow: "hidden",
-    "border-radius": "10px",
-    "box-shadow": "rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0 0 6px",
-    transition: "1s cubic-bezier(0.445, 0.05, 0.55, 0.95)"
-  }
 
 
   mousePX = (): number => {
@@ -96,7 +88,7 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
         transform: `translateX(${this.state.tX}px) translateY(${this.state.tY}px)`
       }
     });
-    console.log(this.state.cardStyle);
+    console.log(this);
   };
 
   handleMouseEnter = (): void => {
@@ -122,14 +114,14 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
         onMouseMove={this.handleMouseMove}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave} >
-        <div id={this.id} className='card' style={this.state.cardStyle} >
+        <div id={this.id} className='card' style={{ ...this.cardCss, ...this.state.cardStyle }}>
           <div className='card-bg' style={{ ...this.background, ...this.state.cardBgTransform }}> </div>
           <div className='card-info' >
             <slot name="header">{this.props.head}</slot>
             <slot name="content">{this.props.content}</slot>
           </div>
         </div>
-      </div>
+      </div >
     )
   };
 }
