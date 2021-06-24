@@ -1,16 +1,27 @@
 {
   "compilerOptions": {
     "module": "esnext",
-    "target": "es2020",
-    "jsx": "react-jsx",
+    "target": "es5",
+    "jsx": "react",
     "strictFunctionTypes": true,
     "sourceMap": true,
+    "outDir": "lib",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "removeComments": true,
     "lib": [
       "dom",
-      "dom.iterable",
-      "esnext"
+      "ES6",
+      "ES2020"
     ],
+    "typeRoots": [
+      "index.d.ts",
+      "node_modules/@types"
+    ],
+    "declaration": true,
     "allowJs": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -20,13 +31,20 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "exclude": [
     "node_modules",
-    "**/node_modules/*"
+    "lib",
+    "rollup.config.js",
+    "**/node_modules/*",
+    "./src/example.tsx"
   ],
   "include": [
-    "src"
+    "./src/**/*.tsx",
+    "./src/**/*.ts",
+    "index.js"
   ]
 }

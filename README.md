@@ -6,7 +6,7 @@ Written in typescript.
 
 ### Demo
 
-https://user-images.githubusercontent.com/53266261/122939164-0571e100-d391-11eb-9d2b-b07f32dfee19.mp4
+<https://user-images.githubusercontent.com/53266261/122939164-0571e100-d391-11eb-9d2b-b07f32dfee19.mp4>
 
 ## Usage
 
@@ -20,8 +20,8 @@ import CardFlee from 'react-cardflee-anim'
 
 | Prop | Description | Default | Example |
 |:- |:- |:-:|:-|
-| __height__ | Height of card | 300px | `height = "300px"` |
-| __width__ | Width of card | 200px | `width = "200px"` |
+| __height__ | Height of card | 300 | `height = "300"` |
+| __width__ | Width of card | 200 | `width = "200"` |
 | __id__ | Unique id for each card | undefined | `id = "1" or id={1}` |
 | __image__ | Image src |  undefined | `image = "/image.jpg"` |
 | __sensitivity__ | (int) a factor for sensitiveness of animation | 20 | `sensitivity = {23}` |

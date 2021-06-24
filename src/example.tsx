@@ -1,5 +1,7 @@
 import React from "react";
-import CardFlee from "./CardFlee";
+// import CardFlee from "./CardFlee";
+import CardFlee from 'react-cardflee-anim';
+
 import ReactDOM from "react-dom";
 const content1 = <React.Fragment><p>watch the movie now
     <br />Grab your Tickets <br /></p></React.Fragment>;
@@ -22,5 +24,4 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById('root')
 );
-
 

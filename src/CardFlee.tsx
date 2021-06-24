@@ -1,6 +1,5 @@
-import React from 'react';
-import { Component } from 'react';
-import './CardFlee.css';
+import React, { ReactNode, Component } from 'react';
+import './styles.css';
 
 export interface CardFleeState {
   mouseX: number, mouseY: number,
@@ -11,13 +10,13 @@ export interface CardFleeState {
 }
 
 export interface CardFleeProps {
-  height: number,
+  height?: number,
   id: number | string,
   image?: string,
-  width: number,
+  width?: number,
   sensitivity?: number,
-  head?: Component,
-  content?: Component,
+  head?: ReactNode,
+  content?: ReactNode,
   bgcolor?: string
 }
 
@@ -35,8 +34,8 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
     this.background = (props.image && {
       'backgroundImage': `url("${props.image}")`,
     }) || {};
-    this.halfWidth = props.width / 2 || 100;
-    this.halfHeight = props.height / 2 || 150;
+    this.halfWidth = (props.width && (props.width / 2)) || 100;
+    this.halfHeight = (props.height && (props.height / 2)) || 150;
     this.id = `card-${props.id}`;
     this.sensitivity = props.sensitivity || 12;
     this.senseY = -(this.sensitivity * 0.8);
@@ -56,8 +55,6 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
       }
     }
   }
-
-
 
   cardStyle = {
     position: "relative",
