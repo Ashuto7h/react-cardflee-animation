@@ -2,6 +2,7 @@ import React from "react";
 import CardFlee from './CardFlee';
 
 import ReactDOM from "react-dom";
+
 const content1 = <React.Fragment><p>watch the movie now
     <br />Grab your Tickets <br /></p></React.Fragment>;
 
