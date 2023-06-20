@@ -65,7 +65,7 @@
     "lint-staged": "^11.0.0",
     "rollup": "^2.52.2",
     "rollup-plugin-postcss": "^4.0.0",
-    "rollup-plugin-scss": "^2.6.1",
+    "rollup-plugin-scss": "^4.0.0",
     "rollup-plugin-typescript2": "^0.30.0"
   },
   "husky": {
