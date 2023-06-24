@@ -5,18 +5,7 @@ on:
     types: [created]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18.15.0
-      - run: yarn install --frozen-lockfile
-      - run: yarn pack-build
-      
-  publish-gpr:
-    needs: build
+  publish-npm-package:
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -27,8 +16,11 @@ jobs:
         with:
           node-version: 18.15.0
           registry-url: https://registry.npmjs.org
-      - run: |
-          yarn install --frozen-lockfile
-          npm publish 
+      - name: install packages
+        run: yarn install --frozen-lockfile
+      - name: build release package
+        run: yarn pack-build
+      - name: publish package
+        run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
