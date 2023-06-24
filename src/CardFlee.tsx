@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { ReactElement } from 'react';
+import React, { Component, ReactElement } from 'react';
 import './styles.css';
 
 export interface CardFleeState {
@@ -21,8 +20,8 @@ export interface CardFleeProps {
   bgcolor?: string
 }
 
-export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
-  mouseLeaveDelay: NodeJS.Timeout | any = null;
+export class CardFlee extends Component<CardFleeProps, CardFleeState> {
+  mouseLeaveDelay: number | undefined = undefined;
   background: {};
   id: string;
   halfWidth: number;
@@ -32,18 +31,20 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
   cardCss: {};
   constructor(props: CardFleeProps) {
     super(props);
-    this.background = (props.image && {
-      'backgroundImage': `url("${props.image}")`,
-    }) || {};
-    this.halfWidth = (props.width && (props.width / 2)) || 100;
-    this.halfHeight = (props.height && (props.height / 2)) || 150;
+    this.background =
+      (props.image && {
+        backgroundImage: `url("${props.image}")`,
+      }) ||
+      {};
+    this.halfWidth = (props.width && props.width / 2) || 100;
+    this.halfHeight = (props.height && props.height / 2) || 150;
     this.id = `card-${props.id}`;
     this.sensitivity = props.sensitivity || 12;
     this.senseY = -(this.sensitivity * 0.8);
     this.cardCss = {
-      width: (this.props.width && (this.props.width + 'px')) || "300px",
-      height: (this.props.height && (this.props.height + 'px')) || "500px",
-    }
+      width: (this.props.width && this.props.width + "px") || "300px",
+      height: (this.props.height && this.props.height + "px") || "500px",
+    };
 
     this.state = {
       mouseX: 0,
@@ -53,15 +54,13 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
       rX: 0,
       rY: 0,
       cardStyle: {
-        transform: `rotateY(0deg) rotateX(0deg)`
+        transform: `rotateY(0deg) rotateX(0deg)`,
       },
       cardBgTransform: {
-        transform: `translateX(0px) translateY(0px)`
-      }
-    }
+        transform: `translateX(0px) translateY(0px)`,
+      },
+    };
   }
-
-
 
   mousePX = (): number => {
     return (this.state.mouseX - this.halfWidth) / this.halfWidth;
@@ -72,8 +71,11 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
   };
 
   handleMouseMove = (e: React.MouseEvent): void => {
-    const card: HTMLElement | any = document.getElementById(this.id);
-    var { x, y }: DOMRect | any = card.getBoundingClientRect()
+    const card: HTMLElement | null = document.getElementById(this.id);
+    if (!card) {
+      return;
+    }
+    let { x, y }: DOMRect = card.getBoundingClientRect();
     this.setState({
       mouseX: e.clientX - x,
       mouseY: e.clientY - y,
@@ -82,11 +84,11 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
       rX: this.mousePX() * this.sensitivity,
       rY: this.mousePY() * this.senseY,
       cardStyle: {
-        transform: `rotateY(${this.state.rX}deg) rotateX(${this.state.rY}deg)`
+        transform: `rotateY(${this.state.rX}deg) rotateX(${this.state.rY}deg)`,
       },
       cardBgTransform: {
-        transform: `translateX(${this.state.tX}px) translateY(${this.state.tY}px)`
-      }
+        transform: `translateX(${this.state.tX}px) translateY(${this.state.tY}px)`,
+      },
     });
     console.log(this);
   };
@@ -99,30 +101,41 @@ export default class CardFlee extends Component<CardFleeProps, CardFleeState> {
     this.mouseLeaveDelay = setTimeout(() => {
       this.setState({
         cardStyle: {
-          transform: `rotateY(0deg) rotateX(0deg)`
+          transform: `rotateY(0deg) rotateX(0deg)`,
         },
         cardBgTransform: {
-          transform: `translateX(0px) translateY(0px)`
-        }
+          transform: `translateX(0px) translateY(0px)`,
+        },
       });
     }, 1000);
   };
 
   render() {
     return (
-      <div className='card-wrap'
+      <div
+        className="card-wrap"
         onMouseMove={this.handleMouseMove}
         onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave} >
-        <div id={this.id} className='card' style={{ ...this.cardCss, ...this.state.cardStyle }}>
-          <div className='card-bg' style={{ ...this.background, ...this.state.cardBgTransform }}> </div>
-          <div className='card-info' >
+        onMouseLeave={this.handleMouseLeave}
+      >
+        <div
+          id={this.id}
+          className="card"
+          style={{ ...this.cardCss, ...this.state.cardStyle }}
+        >
+          <div
+            className="card-bg"
+            style={{ ...this.background, ...this.state.cardBgTransform }}
+          >
+            {" "}
+          </div>
+          <div className="card-info">
             <slot name="header">{this.props.head}</slot>
             <slot name="content">{this.props.content}</slot>
           </div>
         </div>
-      </div >
-    )
-  };
+      </div>
+    );
+  }
 }
 

@@ -1,2 +1,1 @@
-import CardFlee from "./CardFlee";
-export default CardFlee;
+export * from './CardFlee'
